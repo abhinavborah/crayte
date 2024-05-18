@@ -1,6 +1,6 @@
 build:
-	gcc -F/Library/Frameworks -framework SDL2 -rpath /Library/Frameworks/ -Wall -std=c99 ./src/*.c -o ./bin/crayte
-
+	gcc -Wall -std=c99 ./src/*.c -o ./bin/crayte -I/opt/homebrew/include -L/opt/homebrew/lib -lSDL2 -lm
+ 
 run:
 	./bin/crayte
 
