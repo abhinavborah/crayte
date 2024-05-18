@@ -84,6 +84,17 @@ void process_input(void) {
 
 void update(void) {}
 
+// draw a white grid with pixel values multiple of 10
+void draw_grid(void) {
+  for (int y = 0; y < window_height; y++) {
+    for (int x = 0; x < window_width; x++) {
+      if (x % 25 == 0 || y % 25 == 0) {
+        color_buffer[(y * window_width) + x] = 0xffffffff;
+      }
+    }
+  }
+}
+
 void render_color_buffer(void) {
   SDL_UpdateTexture(color_buffer_texture, NULL, color_buffer,
                     window_width * sizeof(uint32_t));
@@ -102,6 +113,7 @@ void render(void) {
   SDL_SetRenderDrawColor(renderer, 0, 0, 0, 1);
   SDL_RenderClear(renderer);
 
+  draw_grid();
   render_color_buffer();
   clear_color_buffer(0xff000000);
 
