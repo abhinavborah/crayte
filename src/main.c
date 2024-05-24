@@ -1,4 +1,5 @@
 #include "display.h"
+#include "vector.h"
 #include <SDL2/SDL.h>
 #include <stdbool.h>
 #include <stdint.h>
@@ -56,6 +57,8 @@ int main(void) {
   is_running = initialize_window();
 
   setup();
+
+  vec3_t my_vector = {2.0, 3.0, -4.0};
 
   while (is_running) {
     process_input();
