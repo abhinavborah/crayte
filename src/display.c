@@ -38,7 +38,7 @@ bool initialize_window(void) {
   }
 
   // Set the window to fullscreen
-  SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
+  // SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN);
 
   return true;
 }
@@ -53,17 +53,16 @@ void draw_grid(void) {
 }
 
 void draw_pixel(int x, int y, uint32_t color) {
-  if (x < window_width && y < window_height) {
+  if (x >= 0 && x < window_width && y >= 0 && y >= 0 && y < window_height) {
     color_buffer[(y * window_width) + x] = color;
   }
 }
 
 // draw a rectangle taking x and y position along with sidth and height as input
 void draw_rectangle(int x, int y, int width, int height, uint32_t color) {
-  // TODO: implement window res check
   for (int i = 0; i < width; i++) {
     for (int j = 0; j < height; j++) {
-      color_buffer[(y + j) * window_width + x + i] = color;
+      draw_pixel(x + i, y + j, color);
     }
   }
 }
